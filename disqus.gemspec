@@ -1,7 +1,10 @@
+# -*- encoding: utf-8 -*-
+require File.expand_path('../lib/disqus/version', __FILE__)
+
 spec = Gem::Specification.new do |s|
 
   s.name              = "disqus"
-  s.version           = Disqus::Version::STRING
+  s.version           = ::Disqus::VERSION
   s.rubyforge_project = "disqus"
   s.authors           = ['Norman Clarke', 'Matthew Van Horn']
   s.email             = ['norman@njclarke.com', 'mattvanhorn@gmail.com']

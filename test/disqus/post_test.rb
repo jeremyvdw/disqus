@@ -1,7 +1,7 @@
-require File.dirname(__FILE__) + '/test_helper'
+require 'test_helper'
 
 class PostTest < Test::Unit::TestCase
-  
+
   def setup
     Disqus.defaults[:api_key] = DISQUS_TEST["api_key"]
   end
@@ -12,6 +12,4 @@ class PostTest < Test::Unit::TestCase
     assert_equal 2,  list.size
     assert_equal list.first.message, "This is a mock post"
   end
-  
-  
 end

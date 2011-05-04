@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/test_helper'
+require 'test_helper'
 
 class ApiTest < Test::Unit::TestCase
   
@@ -69,11 +69,11 @@ class ApiTest < Test::Unit::TestCase
   private
   
   def mock_get_response(file)
-    Disqus::Api.expects(:get).returns(File.read(File.dirname(__FILE__) + "/responses/#{file}"))  
+    Disqus::Api.expects(:get).returns(File.read(File.dirname(__FILE__) + "/../responses/#{file}"))
   end
   
   def mock_post_response(file)
-    Disqus::Api.expects(:post).returns(File.read(File.dirname(__FILE__) + "/responses/#{file}"))  
+    Disqus::Api.expects(:post).returns(File.read(File.dirname(__FILE__) + "/../responses/#{file}"))
   end
 
 end

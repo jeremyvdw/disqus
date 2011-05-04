@@ -1,4 +1,4 @@
-%w[api author forum post thread version view_helpers widget].each do |file|
+%w[api auth author forum post thread version view_helpers widget].each do |file|
   require File.join(File.dirname(__FILE__), "disqus", file)
 end
 
@@ -19,9 +19,10 @@ end
 
 # To use this code, please first create an account on Disqus[http://disqus.com].
 module Disqus
-  
+
   @defaults = {
     :api_key         => "",
+    :api_secret      => "",
     :account         => "",
     :developer       => false,
     :container_id    => 'disqus_thread',

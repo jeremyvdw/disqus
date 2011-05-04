@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/test_helper'
+require 'test_helper'
 
 class ThreadTest < Test::Unit::TestCase
   
@@ -21,7 +21,4 @@ class ThreadTest < Test::Unit::TestCase
                         "http://www.example.com/testthread",
                         "this_is_the_thread_identifier" )]
   end
-
 end
-
-

@@ -37,10 +37,10 @@ module Disqus
   # moderators of a forum, and is used to perform actions associated with that
   # forum. The creator of a forum can get the forum's key through the API.
   class Api
-    
+
     ROOT = 'http://disqus.com/api'
-    API_VERSION = '1.1'
-  
+    API_VERSION = '3.0'
+
     class << self
 
       # Creates a new post on the thread. Does not check against spam filters or ban list. 
@@ -235,24 +235,23 @@ module Disqus
       
       def post(*args)
         args << { :api_version => API_VERSION }
-        url = ROOT + '/' + args.shift 
+        url = create_url(args.shift) 
         post_params = {}
         args.shift.each { |k, v| post_params[k.to_s]=v.to_s }
-        Net::HTTP.post_form(URI.parse(url),post_params).body
+        Net::HTTP.post_form(URI.parse(url), post_params).body
       end
 
       def make_url(*args)
-        url = ROOT + '/' + args.shift + '/?'
-        args.shift.each { |k, v| url += "#{k}=#{escape(v.to_s)}&" }
-        return url.chomp('&')
+        create_url(args.shift) + '?' + args.shift.map { |k,v| url += "#{k}=#{escape(v.to_s)}&" }.to_s.chomp
+      end
+
+      def create_url(resource)
+        URI.join Disqus::Api::ROOT, Disqus::Api::API_VERSION, resource
       end
 
       def validate_opts!(opts)
         raise ArgumentError.new("You must specify an :api_key") if !opts[:api_key]
       end
-      
     end
-  
   end
-
 end

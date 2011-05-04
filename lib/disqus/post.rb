@@ -4,7 +4,7 @@ module Disqus
     attr_reader :id, :forum, :thread, :created_at, :message, :parent_post, :shown, :is_anonymous, :author
     
     def initialize(id, forum, thread, created_at, message, parent_post, shown, is_anonymous, author)
-         @id, @forum, @thread, @created_at, @message, @parent_post, @shown, @is_anonymous, @author = id.to_i, forum, thread, Time.parse(created_at.to_s), message, parent_post, shown, is_anonymous, author
+      @id, @forum, @thread, @created_at, @message, @parent_post, @shown, @is_anonymous, @author = id.to_i, forum, thread, Time.parse(created_at.to_s), message, parent_post, shown, is_anonymous, author
     end
     
     # Returns an array of Post objects representing all posts belonging to the
@@ -47,5 +47,3 @@ module Disqus
     end
   end
 end
-
-
